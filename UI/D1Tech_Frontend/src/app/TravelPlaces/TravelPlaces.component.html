@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="row">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="saveTravel(form)"
+        *ngIf="form != undefined && form != null"
+        style="margin-left: 1rem; margin-bottom: 1rem; margin-top: 1rem"
+      >
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-11">
+              <div class="form-group row">
+                <label for="ddlName" class="col-md-3 text-right"
+                  >Gezilecek Yer</label
+                >
+                <div class="col-md-9">
+                  <input
+                    type="text"
+                    id="ddlName"
+                    formControlName="Name"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <button
+                type="submit"
+                title="Kaydet"
+                style="cursor: pointer"
+                class="btn btn-sm btn-outline btn-outline-dashed btn-outline-info btn-active-light-info"
+              >
+                Kaydet
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="container">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Adı</th>
+                  <th>Aksiyonlar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let travelPlace of travelPlaces">
+                  <td>{{ travelPlace.Name }}</td>
+                  <td>
+                    <button
+                      (click)="editTravelPlace(travelPlace.Id)"
+                      class="btn btn-primary btn-sm"
+                      title="Düzenle"
+                    >
+                      Düzenle
+                    </button>
+                    <button
+                      (click)="deleteTravelPlace(travelPlace.Id)"
+                      class="btn btn-danger btn-sm"
+                      title="Sil"
+                    >
+                      Sil
+                    </button>
+                    <button
+                      (click)="AddressList(travelPlace.Id)"
+                      class="btn btn-success btn-sm"
+                    >
+                      Adresler
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
